@@ -73,5 +73,7 @@ public function token()
             'scope' => '',
         ],
     ]);
+    
+    return json_decode((string) $response->getBody(), true);
 }
 ```
