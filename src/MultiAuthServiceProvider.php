@@ -6,11 +6,9 @@ use Illuminate\Auth\RequestGuard;
 use Laravel\Passport\PassportServiceProvider;
 use Laravel\Passport\ClientRepository;
 use Laravel\Passport\Guards\TokenGuard;
-use Laravel\Passport\Passport;
-use Laravel\Passport\Bridge\RefreshTokenRepository;
-use League\OAuth2\Server\Grant\PasswordGrant;
 use League\OAuth2\Server\ResourceServer;
-use Yutian\LPM\Bridge\MultiAuthUserRepository;
+use Illuminate\Support\Facades\Auth;
+use Yutianx\LPM\Facades\PassportMultiAuth as PassportMultiAuthFacade;
 
 class MultiAuthServiceProvider extends PassportServiceProvider
 {
@@ -21,27 +19,33 @@ class MultiAuthServiceProvider extends PassportServiceProvider
 
     public function register()
     {
+        $this->registerMultiAuth();
+
+        $this->setProvider();
+
         parent::register();
+    }
+
+    /**
+     * Register multi auth.
+     */
+    protected function registerMultiAuth()
+    {
         $this->app->singleton('passport.multiauth', function () {
-            return new PassportMultiAuth();
+            return new PassportMultiAuth;
         });
     }
 
     /**
-     * Create and configure a Password grant instance.
-     *
-     * @return \League\OAuth2\Server\Grant\PasswordGrant
+     * Reset provider
      */
-    protected function makePasswordGrant()
+    protected function setProvider()
     {
-        $grant = new PasswordGrant(
-            $this->app->make(MultiAuthUserRepository::class),
-            $this->app->make(RefreshTokenRepository::class)
-        );
+        $provider = PassportMultiAuthFacade::provider();
 
-        $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
-
-        return $grant;
+        config([
+            'auth.guards.api.provider' => $provider,
+        ]);
     }
 
     /**

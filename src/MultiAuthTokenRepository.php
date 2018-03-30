@@ -13,8 +13,7 @@ class MultiAuthTokenRepository extends TokenRepository
      */
     protected function clientId()
     {
-        $guard = PassportMultiAuth::guard();
-        return config('auth.guards.' . $guard . '.client_id');
+        return PassportMultiAuth::clientId();
     }
 
     /**
@@ -26,10 +25,10 @@ class MultiAuthTokenRepository extends TokenRepository
     public function find($id)
     {
         if ($this->clientId()) {
-            return Token::find($id);
-        } else {
             return Token::where('client_id', $this->clientId())
                 ->find($id);
+        } else {
+            return Token::find($id);
         }
     }
 
