@@ -1,5 +1,5 @@
 {
-    "name": "yutiax/laravel-passport-multiauth",
+    "name": "yutianx/laravel-passport-multiauth",
     "description": "Laravel passport multiple user authentication",
     "keywords": ["laravel", "passport", "multiauth"],
     "license": "MIT",
