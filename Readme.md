@@ -1,6 +1,6 @@
 # Laravel Passport Multi-Auth
 
-[![License](https://poser.pugx.org/smartins/passport-multiauth/license)](https://packagist.org/packages/smartins/passport-multiauth)
+[![License](https://poser.pugx.org/smartins/passport-multiauth/license)](https://packagist.org/packages/yutianx/laravel-passport-multiauth)
 
 Add multi-authentication support to [Laravel Passport](https://github.com/laravel/passport/)
 
