@@ -1,0 +1,31 @@
+{
+    "name": "yutiax/laravel-passport-multiauth",
+    "description": "Laravel passport multiple user authentication",
+    "keywords": ["laravel", "passport", "multiauth"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yutian",
+            "email": "yutian.dev@gmail.com"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/yutianx/laravel-passport-multiauth"
+    },
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/passport": "^2.0|^3.0|^4.0|^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yutianx\\LPM\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yutianx\\LPM\\MultiAuthServiceProvider"
+            ]
+        }
+    }
+}
