@@ -1,20 +1,20 @@
 # Laravel Passport Multi-Auth
 
-[![License](https://poser.pugx.org/smartins/passport-multiauth/license)](https://packagist.org/packages/yutianx/laravel-passport-multiauth)
+[![License](https://poser.pugx.org/smartins/passport-multiauth/license)](https://packagist.org/packages/yutiandev/laravel-passport-multiauth)
 
 Add multi-authentication support to [Laravel Passport](https://github.com/laravel/passport/)
 
 ## Installation
 With Composer
 ```bash
-$ composer require yutianx/laravel-passport-multiauth
+$ composer require yutiandev/laravel-passport-multiauth
 ```
 
 If you are using a Laravel version less than 5.5 you need to add the provider on config/app.php:
 ```php
     'providers' => [
         ...
-        Yutianx\LPM\MultiAuthServiceProvider::class,
+        YTDev\LPM\MultiAuthServiceProvider::class,
     ]
 ```
 
@@ -68,7 +68,7 @@ public function token()
     $response = $http->post('http://your-app.com/oauth/token', [
         'form_params' => [
             'grant_type' => 'password',
-            'client_id' => \Yutianx\LPM\Facades\PassportMultiAuth::clientId(),
+            'client_id' => \YTDev\LPM\Facades\PassportMultiAuth::clientId(),
             'client_secret' => 'client-secret',
             'username' => 'taylor@laravel.com',
             'password' => 'my-password',
